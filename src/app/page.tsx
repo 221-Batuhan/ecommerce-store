@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { products } from "./data/products";
+import { useCart } from "../context/CartContext";
 
 export default function Home() {
   return (

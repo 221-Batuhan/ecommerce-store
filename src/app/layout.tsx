@@ -1,7 +1,10 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link"; // 🔹 Link bileşeni eklendi
+import { CartProvider } from "../context/CartContext";
+import Navbar from "components/Navbar"; 
+import CartDebug from "components/CartDebug";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,31 +23,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* 🔹 Navbar Start */}
-        <nav className="bg-gray-900 text-white px-8 py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
-            StoreLogo
-          </Link>
-          <div className="flex gap-4">
-            <Link href="/" className="hover:underline">
-              Home
-            </Link>
-            <Link href="/cart" className="hover:underline">
-              Cart
-            </Link>
-          </div>
-        </nav>
-        {/* 🔹 Navbar End */}
-
-        <main>{children}</main>
+        <CartProvider>
+          <Navbar /> {/* ✅ client-only */}
+          <main>{children}</main>
+          <CartDebug /> {/* optional */}
+        </CartProvider>
       </body>
     </html>
   );
