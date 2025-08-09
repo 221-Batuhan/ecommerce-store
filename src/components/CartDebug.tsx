@@ -1,9 +1,17 @@
 "use client";
 
 import { useCart } from "../context/CartContext";
+import { useState, useEffect } from "react";
 
 export default function CartDebug() {
   const { cart } = useCart();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
     <div

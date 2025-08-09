@@ -3,6 +3,54 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Old Money Color Palette */
+  --old-money-50: #f2f7f6;
+  --old-money-100: #e6efed;
+  --old-money-200: #bfd9d4;
+  --old-money-300: #99c3bb;
+  --old-money-400: #4d9789;
+  --old-money-500: #2c5c4f;
+  --old-money-600: #285347;
+  --old-money-700: #21453b;
+  --old-money-800: #1a372f;
+  --old-money-900: #162d27;
+  
+  /* Cream Palette */
+  --cream-50: #fefefe;
+  --cream-100: #fdfcfb;
+  --cream-200: #faf7f5;
+  --cream-300: #f6f1ed;
+  --cream-400: #efe6df;
+  --cream-500: #e8dbd1;
+  --cream-600: #d1c5bc;
+  --cream-700: #aea49c;
+  --cream-800: #8f8680;
+  --cream-900: #756e69;
+  
+  /* Gold Palette */
+  --gold-50: #fefdf9;
+  --gold-100: #fdfbf3;
+  --gold-200: #faf5e1;
+  --gold-300: #f6eecf;
+  --gold-400: #eee1a7;
+  --gold-500: #e6d47f;
+  --gold-600: #cfbf72;
+  --gold-700: #ad9f5f;
+  --gold-800: #8c7f4c;
+  --gold-900: #72673e;
+  
+  /* Navy Palette */
+  --navy-50: #f4f6f8;
+  --navy-100: #e9edf1;
+  --navy-200: #c8d3dd;
+  --navy-300: #a7b9c9;
+  --navy-400: #6585a1;
+  --navy-500: #235179;
+  --navy-600: #1f496d;
+  --navy-700: #1a3d5b;
+  --navy-800: #153149;
+  --navy-900: #11283b;
 }
 
 @theme inline {
@@ -22,5 +70,51 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--old-money-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--old-money-400);
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Luxury focus states */
+*:focus-visible {
+  outline: 2px solid var(--old-money-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom selection colors */
+::selection {
+  background-color: var(--old-money-200);
+  color: var(--old-money-900);
+}
+
+::-moz-selection {
+  background-color: var(--old-money-200);
+  color: var(--old-money-900);
 }

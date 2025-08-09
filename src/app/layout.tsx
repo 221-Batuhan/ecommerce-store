@@ -3,8 +3,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "../context/CartContext";
+import { ToastProvider } from "../context/ToastContext";
 import Navbar from "components/Navbar"; 
 import CartDebug from "components/CartDebug";
+import ToastContainer from "components/ToastContainer";
+import BackToTop from "components/BackToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "E-commerce Store",
-  description: "My finishing project",
+  title: "A Clothing - Premium Fashion & Apparel",
+  description: "Discover the latest trends in fashion. Shop premium clothing, accessories, and footwear for men and women.",
 };
 
 export default function RootLayout({
@@ -31,11 +34,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <CartProvider>
-          <Navbar /> {/* ✅ client-only */}
-          <main>{children}</main>
-          <CartDebug /> {/* optional */}
-        </CartProvider>
+        <ToastProvider>
+          <CartProvider>
+            <Navbar /> {/* ✅ client-only */}
+            <main>{children}</main>
+            <CartDebug /> {/* optional */}
+            <ToastContainer />
+            <BackToTop />
+          </CartProvider>
+        </ToastProvider>
       </body>
     </html>
   );
